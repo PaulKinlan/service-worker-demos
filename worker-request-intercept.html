@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Install Service Worker</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" href="images/touch/icon-128x128.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+
+    <!-- build:css styles/components/main.min.css -->
+    <link rel="stylesheet" href="styles/h5bp.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body>
+    <header class="app-bar promote-layer">
+      <div class="app-bar-container">
+        <button class="menu"><img src="images/hamburger.svg" alt="Menu"></button>
+        <h1 class="logo">Web Starter Kit</h1>
+        <section class="app-bar-actions">
+        <!-- Put App Bar Buttons Here -->
+        </section>
+      </div>
+    </header>
+
+    <main>
+    <h1>Service Worker Demo</h1>
+    </main>
+
+    <script>
+if (navigator.serviceWorker) {
+ console.log("Browser supports Service Worker");
+ if (navigator.serviceWorker.current) {
+    console.log("Current Service Worker state: \\o/");
+   // navigator.serviceWorker;
+  } else {
+    console.log("No Service Worker active...");
+    console.log('About to try to install a Service Worker');
+   navigator.serviceWorker.register('./worker-request-intercept.js')
+     .then(function(serviceWorker) {
+        console.log('Successfully installed ServiceWorker');
+       window.ourServiceWorker = serviceWorker;
+     }, function(why) {
+        console.log('Failed to install:' + why);
+     });
+  }
+}
+  </script>
+   
+    <!-- Built with love using Web Starter Kit -->
+  </body>
+</html>
